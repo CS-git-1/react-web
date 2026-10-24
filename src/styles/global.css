@@ -1,0 +1,95 @@
+* { box-sizing: border-box; }
+
+html { min-width: 320px; min-height: 100%; background: #f5f6fa; }
+body { min-width: 320px; min-height: 100vh; margin: 0; }
+button, input { font: inherit; }
+
+.page-shell {
+  min-height: 100vh;
+  padding: 30px 24px 48px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(226, 224, 255, 0.48), transparent 43%),
+    #f5f6fa;
+}
+
+.app-container { width: min(100%, 760px); margin: 0 auto; }
+.app-header { display: flex; align-items: center; gap: 12px; margin: 0 0 35px; }
+.brand-mark, .welcome-icon, .empty-icon { display: grid; place-items: center; flex: 0 0 auto; }
+.brand-mark { width: 42px; height: 42px; border-radius: 14px; background: #635bdb; color: #fff; }
+.brand-mark svg { font-size: 22px; }
+.brand-name { color: #292840; font-size: 18px; font-weight: 750; line-height: 1.1; letter-spacing: -0.5px; }
+.brand-caption { margin-top: 3px; color: #9696a8; font-size: 11px; }
+.today-label { margin-left: auto; color: #77788c; font-size: 13px; font-weight: 600; }
+
+.todo-card { padding: 36px 42px 24px; border: 1px solid #ececf3; box-shadow: 0 18px 55px rgba(39, 38, 76, 0.065); }
+.welcome-block { margin-bottom: 27px; text-align: center; }
+.welcome-icon { width: 42px; height: 42px; margin: 0 auto 12px; border-radius: 14px; background: #f0efff; color: #635bdb; }
+.welcome-icon svg { font-size: 21px; }
+.page-title { color: #28273e; font-size: clamp(22px, 4vw, 29px); font-weight: 730; line-height: 1.2; letter-spacing: -1px; }
+.page-subtitle { margin-top: 8px; color: #9292a4; font-size: 14px; }
+
+.todo-form { display: flex; gap: 10px; }
+.todo-form .MuiOutlinedInput-root { min-height: 52px; border-radius: 12px; background: #fbfbfd; font-size: 14px; }
+.todo-form .MuiOutlinedInput-notchedOutline { border-color: #e8e8ef; }
+.todo-form .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline { border-color: #c8c5f6; }
+.todo-form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline { border-width: 1px; border-color: #827bed; }
+.input-icon { color: #a4a3b6; }
+.todo-form > .MuiButton-root { min-width: 120px; padding: 0 18px; white-space: nowrap; }
+.todo-form > .MuiButton-root.Mui-disabled { background: #d9d7f5; color: #fff; }
+
+.list-toolbar { display: flex; min-height: 56px; align-items: center; justify-content: space-between; margin-top: 18px; border-bottom: 1px solid #f0f0f4; }
+.section-label { color: #9898a9; font-size: 10px; font-weight: 750; letter-spacing: 1.2px; }
+.section-label span { display: inline-grid; min-width: 20px; height: 20px; place-items: center; margin-left: 5px; border-radius: 20px; background: #f1f0ff; color: #655ed1; font-size: 10px; letter-spacing: 0; }
+.clear-button { color: #8d8da0; font-size: 11px; }
+.clear-button:hover { background: #fff2f2; color: #d15d68; }
+
+.todo-list { display: grid; gap: 9px; margin: 14px 0 0; padding: 0; list-style: none; }
+.todo-item { display: flex; min-width: 0; min-height: 58px; align-items: center; gap: 9px; padding: 7px 10px 7px 5px; border: 1px solid #efeff4; border-radius: 12px !important; transition: border-color 150ms ease, background 150ms ease; }
+.todo-item:hover { border-color: #dfdef6; background: #fdfdff; }
+.todo-checkbox { color: #c8c8d5; }
+.todo-checkbox.Mui-checked { color: #27a77a; }
+.todo-title { min-width: 0; flex: 1; overflow-wrap: anywhere; color: #454459; font-size: 13px; line-height: 1.5; }
+.todo-item.is-completed .todo-title { color: #a5a5b2; text-decoration: line-through; text-decoration-color: #bdbdc8; }
+.delete-button { color: #b2b2c0; opacity: 0.55; }
+.delete-button:hover { background: #fff0f0; color: #d45b67; }
+.todo-item:hover .delete-button, .delete-button:focus-visible { opacity: 1; }
+
+.empty-state { display: grid; justify-items: center; padding: 39px 16px 35px; text-align: center; }
+.empty-icon { width: 48px; height: 48px; margin-bottom: 13px; border-radius: 16px; background: #f3f3f8; color: #9797ab; }
+.empty-icon svg { font-size: 23px; }
+.empty-title { color: #4b4a60; font-size: 14px; font-weight: 650; }
+.empty-copy { margin-top: 5px; color: #a0a0af; font-size: 12px; }
+
+.list-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 17px; padding-top: 14px; border-top: 1px solid #f0f0f4; }
+.remaining-count { color: #a0a0af; font-size: 11px; }
+.remaining-count strong { color: #68677e; font-weight: 700; }
+.todo-filters { gap: 3px; border: 0 !important; }
+.todo-filters .filter-button { min-width: 0; padding: 6px 9px; border: 0 !important; border-radius: 8px !important; color: #9292a3; font-size: 11px; white-space: nowrap; }
+.todo-filters .filter-button:hover { background: #f6f5ff; color: #635bdb; }
+.todo-filters .filter-button.selected { background: #efeeff; color: #5f57cf; }
+.filter-count { margin-left: 5px; opacity: 0.7; }
+.page-footer { padding-top: 22px; color: #aaaaba; font-size: 11px; text-align: center; }
+.page-footer span { padding-left: 3px; color: #8e86eb; }
+
+@media (max-width: 600px) {
+  .page-shell { padding: 20px 14px 32px; }
+  .app-header { margin-bottom: 22px; }
+  .todo-card { padding: 27px 20px 19px; }
+  .welcome-block { margin-bottom: 22px; }
+}
+
+@media (max-width: 420px) {
+  .page-shell { padding: 16px 11px 28px; }
+  .brand-caption { font-size: 10px; }
+  .today-label { font-size: 11px; }
+  .todo-card { padding: 24px 14px 16px; }
+  .todo-form { flex-direction: column; }
+  .todo-form > .MuiButton-root { min-height: 46px; }
+  .list-footer { align-items: flex-start; flex-direction: column; }
+  .todo-filters { width: 100%; justify-content: space-between; }
+  .todo-filters .filter-button { padding-inline: 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
