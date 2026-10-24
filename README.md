@@ -23,75 +23,64 @@
 
 ```powershell
 node -v
-npm -v
+npm.cmd -v
 ```
 
-```
-หมายเหตุ : หาก PowerShell แจ้งว่าไม่รู้จักคำสั่ง `node` หรือ `npm` ให้เปิด Terminal ใหม่ก่อน หากยังใช้ไม่ได้ ให้ตรวจสอบว่าโฟลเดอร์ Node.js ถูกเพิ่มใน `PATH` แล้วหรือไม่
-```
+ใช้ `npm.cmd` แทน `npm` ใน PowerShell ได้ หาก PowerShell บล็อกสคริปต์ `npm.ps1` ไม่จำเป็นต้องเปลี่ยน Execution Policy
 
 ## ติดตั้งและเปิดโปรเจกต์
 
 เปิด PowerShell แล้วเปลี่ยนไปยังโฟลเดอร์โปรเจกต์:
 
 ```powershell
-cd C:\Portfolio\react-web
+cd C:\Portfolio\react-web-clean
 ```
 
 ติดตั้งแพ็กเกจ:
 
 ```powershell
-npm install
+npm.cmd install
 ```
 
-จากนั้นเริ่มเซิร์ฟเวอร์สำหรับพัฒนา:
+เริ่มเซิร์ฟเวอร์สำหรับพัฒนา:
 
 ```powershell
-npm run dev
+node .\node_modules\vite\bin\vite.js --host 127.0.0.1 --port 5173
 ```
 
-เมื่อ Vite แสดง URL ใน Terminal ให้เปิด URL นั้นในเบราว์เซอร์ โดยปกติจะเป็น:
+เมื่อ Vite แสดงข้อความ `ready` ให้เปิด URL นี้ในเบราว์เซอร์:
 
 ```text
-http://localhost:5173/
+http://127.0.0.1:5173/
 ```
 
-**อย่าปิด Terminal ที่กำลังรัน Vite** ขณะใช้งานเว็บไซต์ หากปิด Terminal ให้รัน `npm run dev` ใหม่อีกครั้ง
+**อย่าปิด Terminal ที่กำลังรัน Vite** ขณะใช้งานเว็บไซต์ หากปิด Terminal ให้รันคำสั่งเริ่มเซิร์ฟเวอร์อีกครั้ง
 
-### กรณี PowerShell เรียก `npm` ไม่ได้
+### หากต้องการใช้ npm script
 
-ถ้าติดตั้ง Node.js ไว้ที่ `C:\Program Files\nodejs\` ให้ใช้คำสั่งต่อไปนี้แทน:
+ปกติสามารถเริ่มเซิร์ฟเวอร์ด้วยคำสั่งนี้ได้:
 
 ```powershell
-cd C:\Portfolio\react-web
-& 'C:\Program Files\nodejs\npm.cmd' install
-& 'C:\Program Files\nodejs\npm.cmd' run dev
+npm.cmd run dev
 ```
 
-คำสั่งที่ขึ้นต้นด้วย `&` ใช้เรียกไฟล์ `npm.cmd` โดยตรง และไม่ต้องเปลี่ยน Execution Policy ของ PowerShell
+หากคำสั่งแสดง `vite` แล้วกลับมาที่ prompt ทันทีโดยไม่มีข้อความ `ready` ให้ใช้คำสั่งเรียก Vite ผ่าน Node โดยตรงในหัวข้อก่อนหน้าแทน และตรวจสอบว่า Terminal แสดง URL ก่อนเปิดเว็บไซต์
 
 ## สร้างและดูตัวอย่างเวอร์ชันสำหรับใช้งานจริง
 
 สร้างไฟล์สำหรับ production:
 
 ```powershell
-npm run build
+npm.cmd run build
 ```
 
 เมื่อ build สำเร็จ ให้เปิดตัวอย่างด้วย:
 
 ```powershell
-npm run preview
+npm.cmd run preview
 ```
 
-จากนั้นเปิด URL ที่แสดงใน Terminal ซึ่งโดยปกติจะเป็น `http://localhost:5173/`
-
-หาก PowerShell เรียก `npm` ไม่ได้ ให้ใช้พาธเต็ม เช่น:
-
-```powershell
-& 'C:\Program Files\nodejs\npm.cmd' run build
-& 'C:\Program Files\nodejs\npm.cmd' run preview
-```
+จากนั้นเปิด URL ที่แสดงใน Terminal ซึ่งโดยปกติจะเป็น `http://localhost:4173/`
 
 ## โครงสร้างโปรเจกต์
 
@@ -101,7 +90,3 @@ npm run preview
 - `src/types/todo.ts` กำหนดชนิดข้อมูลของงานและตัวกรอง
 - `src/theme.ts` ตั้งค่าธีม Material UI
 - `src/styles/global.css` กำหนดรูปแบบและการจัดวางที่รองรับหน้าจอขนาดต่าง ๆ
-
-```
-หมายเหตุ: README นี้มีทั้งคำสั่งทั่วไปและวิธีแก้กรณี PowerShell บนเครื่องคุณเรียก `npm` แบบสั้นไม่ได้ครับ.
-```
